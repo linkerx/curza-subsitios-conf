@@ -28,11 +28,15 @@ function curza_site_options_page_html(){
 
     if (isset($_POST['curza_tipo_pagina'])) {
         update_option('curza_tipo_pagina',$_POST['curza_tipo_pagina']);
+        update_option('curza_id_departamento',$_POST['curza_id_departamento']);
     }
     $tipo_pagina = get_option('curza_tipo_pagina','otro');
+    $id_departamento = get_option('curza_id_departamento',0);
 
     echo "<form method='POST'>";
-    echo "<label for='curza_tipo_pagina'>Tipo de Página: </label>";
+
+    // Tipo Página
+    echo "<p><label for='curza_tipo_pagina'>Tipo de Página: </label>";
     echo "<select name='curza_tipo_pagina' name='curza_tipo_pagina' >";
     echo "<option value='departamento' ";
     if($tipo_pagina == 'departamento') { echo "selected"; }
@@ -40,7 +44,13 @@ function curza_site_options_page_html(){
     echo "<option value='otro' ";
     if($tipo_pagina == 'otro') { echo "selected"; }
     echo ">Otro</option>";
-    echo "</select><br />";
+    echo "</select></p>";
+
+    // ID Departamento
+    echo "<p><label for='id_departamento'>Identificador de Departamento (Sistema de programas)</label>";
+    echo "<input id='id_departamento' name='id_deprtamento' type='number' value='".$id_departamento."' /></p>";
+
+    // Guardar
     echo "<input type='submit' value='Guardar' class='button button-primary button-large'>";
     echo "</form>";
 
