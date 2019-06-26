@@ -48,7 +48,7 @@ function curza_site_options_page_html(){
 
     // ID Departamento
     echo "<p><label for='curza_id_departamento'>Identificador de Departamento (Sistema de programas)</label>";
-    echo "<input id='curza_id_departamento' name='curza_id_deprtamento' type='number' value='".$id_departamento."' /></p>";
+    echo "<input id='curza_id_departamento' name='curza_id_departamento' type='number' value='".$id_departamento."' /></p>";
 
     // Guardar
     echo "<input type='submit' value='Guardar' class='button button-primary button-large'>";
