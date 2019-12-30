@@ -28,17 +28,32 @@ function curza_site_options_page_html(){
     echo "<form method='POST'>";
 
     ////////////////
-    // Tipo Página
+    // Carga de Datos
     ////////////////
 
     if (isset($_POST['curza_tipo_pagina'])) {
         update_option('curza_tipo_pagina',$_POST['curza_tipo_pagina']);
-        update_option('curza_id_departamento',$_POST['curza_id_departamento']);
     }
+
     $tipo_pagina = get_option('curza_tipo_pagina','otro');
+    
+    if($tipo_pagina == "departamento" && isset($_POST['curza_id_departamento']) {
+        update_option('curza_id_departamento', $_POST['curza_id_departamento']);
+    }
+
     $id_departamento = get_option('curza_id_departamento',0);
 
-    echo "<h2>Información General</h2>";
+    $barra_menu_abierta = get_option('curza_barra_menu_abierta',0);
+
+    if(isset($_POST['curza_barra_menu_abierta']) {
+        echo "BARRA - ABIERTA : ".$_POST['curza_barra_menu_abierta'];
+    }
+
+    ////////////////
+    // Tipo Página
+    ////////////////
+
+    echo "<h2>Tipo de Página</h2>";
     echo "<p><label for='curza_tipo_pagina'>Tipo de Página: </label>";
     echo "<select name='curza_tipo_pagina' name='curza_tipo_pagina' >";
     echo "<option value='departamento' ";
@@ -52,6 +67,18 @@ function curza_site_options_page_html(){
     echo "<p><label for='curza_id_departamento'>Identificador de Departamento (Sistema de programas)</label>";
     echo "<input id='curza_id_departamento' name='curza_id_departamento' type='number' value='".$id_departamento."' /></p>";
 
+    ////////////////
+    // Configuracion Barras
+    ////////////////
+
+    echo "<h2>Configuracion de Barras</h2>";
+    echo "<p><label for='curza_barra_menu_abierta'>Iniciar con barra de menú abierta</label>";
+    echo "<input id='curza_barra_menu_abierta' name='curza_barra_menu_abierta' type='checkbox' ";
+        if($barra_menu_abierta == 1) {
+            echo "checked";
+        }
+    echo " /></p>";
+    
     ////////////////
     // Facebook
     ////////////////
@@ -85,6 +112,9 @@ function curza_site_options_page_html(){
     
     echo "<p><label for='curza_subsitio_conf_facebook_token'>Token :</label>";
     echo "<input type='text' name='curza_subsitio_conf_facebook_token' value='".$facebook_token."' /></p>";
+
+    echo "<p><label for='curza_subsitio_conf_facebook_page_id'>Page ID :</label>";
+    echo "<input type='text' name='curza_subsitio_conf_facebook_page_id' value='".$facebook_page_id."' /></p>";
 
     ////////////////
     // Guardar
