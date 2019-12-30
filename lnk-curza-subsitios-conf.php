@@ -37,7 +37,7 @@ function curza_site_options_page_html(){
 
     $tipo_pagina = get_option('curza_tipo_pagina','otro');
     
-    if($tipo_pagina == "departamento" && isset($_POST['curza_id_departamento']) {
+    if($tipo_pagina == "departamento" && isset($_POST['curza_id_departamento'])) {
         update_option('curza_id_departamento', $_POST['curza_id_departamento']);
     }
 
@@ -45,7 +45,7 @@ function curza_site_options_page_html(){
 
     $barra_menu_abierta = get_option('curza_barra_menu_abierta',0);
 
-    if(isset($_POST['curza_barra_menu_abierta']) {
+    if(isset($_POST['curza_barra_menu_abierta'])) {
         echo "BARRA - ABIERTA : ".$_POST['curza_barra_menu_abierta'];
     }
 
