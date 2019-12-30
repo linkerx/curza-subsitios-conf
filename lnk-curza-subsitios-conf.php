@@ -45,8 +45,8 @@ function curza_site_options_page_html(){
 
     $barra_menu_abierta = get_option('curza_barra_menu_abierta',0);
 
-    if(isset($_POST['curza_barra_menu_abierta'])) {
-        echo "BARRA - ABIERTA : ".$_POST['curza_barra_menu_abierta'];
+    if(isset($_POST['curza_barra_menu_abierta']) && $_POST['curza_barra_menu_abierta'] == "on") {
+        update_option('curza_barra_menu_abierta', 1);
     }
 
     ////////////////
