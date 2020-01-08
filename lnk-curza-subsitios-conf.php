@@ -31,9 +31,9 @@ function curza_site_options_page_html(){
     // Debug
     ////////////////    
 
-    echo "<pre>";
-    var_dump($_POST);
-    echo "</pre>";
+    //echo "<pre>";
+    //var_dump($_POST);
+    //echo "</pre>";
 
     ////////////////
     // Guardado / Carga de Datos
@@ -46,16 +46,22 @@ function curza_site_options_page_html(){
                 update_option('curza_id_departamento', $_POST['curza_id_departamento']);
             }
         }
-        if(isset($_POST['curza_barra_menu_abierta']) && $_POST['curza_barra_menu_abierta'] == "on") {
-            update_option('curza_barra_menu_abierta', 1);
+        if(isset($_POST['curza_barra_izq_abierta']) && $_POST['curza_barra_izq_abierta'] == "on") {
+            update_option('curza_barra_izq_abierta', 1);
         } else {
-            update_option('curza_barra_menu_abierta', 0);
+            update_option('curza_barra_izq_abierta', 0);
+        }
+        if(isset($_POST['curza_barra_der_abierta']) && $_POST['curza_barra_der_abierta'] == "on") {
+            update_option('curza_barra_der_abierta', 1);
+        } else {
+            update_option('curza_barra_der_abierta', 0);
         }
     }
 
     $tipo_pagina = get_option('curza_tipo_pagina','otro');
     $id_departamento = get_option('curza_id_departamento',0);
-    $barra_menu_abierta = get_option('curza_barra_menu_abierta',0);
+    $barra_izq_abierta = get_option('curza_barra_izq_abierta',0);
+    $barra_der_abierta = get_option('curza_barra_der_abierta',0);
 
     ////////////////
     // Tipo Página
@@ -80,9 +86,15 @@ function curza_site_options_page_html(){
     ////////////////
 
     echo "<h2>Configuracion de Barras</h2>";
-    echo "<p><label for='curza_barra_menu_abierta'>Iniciar con barra de menú abierta</label>";
-    echo "<input id='curza_barra_menu_abierta' name='curza_barra_menu_abierta' type='checkbox' ";
-        if($barra_menu_abierta == 1) {
+    echo "<p><label for='curza_barra_izq_abierta'>Iniciar con barra izquierda abierta: </label>&nbsp;&nbsp;";
+    echo "<input id='curza_barra_izq_abierta' name='curza_barra_izq_abierta' type='checkbox' ";
+        if($barra_izq_abierta == 1) {
+            echo "checked";
+        }
+    echo " /></p>";
+    echo "<p><label for='curza_barra_der_abierta'>Iniciar con barra derecha abierta: </label>&nbsp;&nbsp;";
+    echo "<input id='curza_barra_der_abierta' name='curza_barra_der_abierta' type='checkbox' ";
+        if($barra_der_abierta == 1) {
             echo "checked";
         }
     echo " /></p>";
