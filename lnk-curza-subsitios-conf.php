@@ -36,29 +36,25 @@ function curza_site_options_page_html(){
     echo "</pre>";
 
     ////////////////
-    // Carga de Datos
+    // Guardado / Carga de Datos
     ////////////////
 
-    if (isset($_POST['curza_tipo_pagina'])) {
-        update_option('curza_tipo_pagina',$_POST['curza_tipo_pagina']);
-    }
-
-    $tipo_pagina = get_option('curza_tipo_pagina','otro');
-    
-    if($tipo_pagina == "departamento" && isset($_POST['curza_id_departamento'])) {
-        update_option('curza_id_departamento', $_POST['curza_id_departamento']);
-    }
-
-    $id_departamento = get_option('curza_id_departamento',0);
-
-    if(isset($_POST['curza_barra_menu_abierta'])) {
-        if($_POST['curza_barra_menu_abierta'] == "on") {
+    if(!empty($_POST)) {
+        if (isset($_POST['curza_tipo_pagina'])) {
+            update_option('curza_tipo_pagina',$_POST['curza_tipo_pagina']);
+            if($_POST['curza_tipo_pagina'] == "departamento" && isset($_POST['curza_id_departamento'])) {
+                update_option('curza_id_departamento', $_POST['curza_id_departamento']);
+            }
+        }
+        if(isset($_POST['curza_barra_menu_abierta']) && $_POST['curza_barra_menu_abierta'] == "on") {
             update_option('curza_barra_menu_abierta', 1);
         } else {
             update_option('curza_barra_menu_abierta', 0);
         }
     }
 
+    $tipo_pagina = get_option('curza_tipo_pagina','otro');
+    $id_departamento = get_option('curza_id_departamento',0);
     $barra_menu_abierta = get_option('curza_barra_menu_abierta',0);
 
     ////////////////
