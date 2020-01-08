@@ -28,6 +28,14 @@ function curza_site_options_page_html(){
     echo "<form method='POST'>";
 
     ////////////////
+    // Debug
+    ////////////////    
+
+    echo "<pre>";
+    var_dump($_POST);
+    echo "</pre>";
+
+    ////////////////
     // Carga de Datos
     ////////////////
 
