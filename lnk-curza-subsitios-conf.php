@@ -43,11 +43,15 @@ function curza_site_options_page_html(){
 
     $id_departamento = get_option('curza_id_departamento',0);
 
-    $barra_menu_abierta = get_option('curza_barra_menu_abierta',0);
-
-    if(isset($_POST['curza_barra_menu_abierta']) && $_POST['curza_barra_menu_abierta'] == "on") {
-        update_option('curza_barra_menu_abierta', 1);
+    if(isset($_POST['curza_barra_menu_abierta'])) {
+        if($_POST['curza_barra_menu_abierta'] == "on") {
+            update_option('curza_barra_menu_abierta', 1);
+        } else {
+            update_option('curza_barra_menu_abierta', 0);
+        }
     }
+
+    $barra_menu_abierta = get_option('curza_barra_menu_abierta',0);
 
     ////////////////
     // Tipo Página
